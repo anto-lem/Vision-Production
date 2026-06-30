@@ -1,0 +1,157 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 5%;
+  pointer-events: none;
+}
+
+.logo {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+.logo span {
+  color: #e31c3d;
+}
+
+.badge {
+  border: 1px solid #333333;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  pointer-events: auto;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 6%;
+  position: relative;
+}
+
+.page.static {
+  height: auto;
+  min-height: 70vh;
+  padding: 90px 6%;
+  border-top: 1px solid #222;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+  margin-bottom: 22px;
+}
+
+.heroTitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 7.5vw, 96px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  max-width: 900px;
+}
+
+.heroSub {
+  max-width: 480px;
+  color: #aaaaaa;
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 15px 28px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.btnPrimary {
+  background: #e31c3d;
+  color: #fff;
+}
+
+.btnGhost {
+  border: 1px solid #333333;
+  color: #fff;
+}
+
+.stageNum {
+  font-size: 13px;
+  color: #e31c3d;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.stageTitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  margin-bottom: 16px;
+  max-width: 520px;
+}
+
+.stageText {
+  color: #aaaaaa;
+  font-size: 15.5px;
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+.stageMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.dotRow {
+  display: flex;
+  gap: 8px;
+}
+
+.dotSmall {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #333333;
+}
+
+.dotSmall.active {
+  background: #e31c3d;
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 36px;
+  left: 6%;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888888;
+}
