@@ -1,17 +1,14 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import {
   MeshTransmissionMaterial,
   MeshDistortMaterial,
   Sparkles,
   Float,
-  useScroll,
 } from "@react-three/drei";
 import * as THREE from "three";
-
-const STAGE_COUNT = 3;
 
 function Chips({ count = 10 }) {
   const group = useRef();
@@ -50,23 +47,48 @@ function Chips({ count = 10 }) {
   );
 }
 
-export default function Lens() {
+// Tracks how far the viewport has scrolled past a given hero element,
+// expressed as 0 -> 1 over one viewport height. Avoids hijacking the
+// page's native scroll (unlike drei's ScrollControls) so it plays nicely
+// with a normal multi-section marketing page.
+function useHeroScrollProgress(heroRef) {
+  const progress = useRef(0);
+
+  useEffect(() => {
+    function onScroll() {
+      const el = heroRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const total = rect.height || window.innerHeight;
+      const passed = Math.min(Math.max(-rect.top, 0), total);
+      progress.current = passed / total;
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [heroRef]);
+
+  return progress;
+}
+
+export default function Lens({ heroRef }) {
   const rig = useRef();
   const ring = useRef();
   const ringMat = useRef();
-  const scroll = useScroll();
+  const progress = useHeroScrollProgress(heroRef);
 
   useFrame((state, delta) => {
-    const p = scroll.offset; // 0 -> 1 across the whole scrollable page
+    const p = progress.current; // 0 -> 1 across the hero's own height only
 
-    // Continuous ambient spin so the object never feels static
     rig.current.rotation.z += delta * 0.12;
-
-    // Scroll-tied transform: opens up, rotates and pulls the camera in
-    rig.current.rotation.y = p * Math.PI * 2.6;
+    rig.current.rotation.y = p * Math.PI * 1.4;
     rig.current.rotation.x = 0.3 + Math.sin(p * Math.PI) * 0.15;
 
-    const targetZ = 9 - p * 3.2;
+    const targetZ = 9 - p * 2.2;
     state.camera.position.z = THREE.MathUtils.damp(
       state.camera.position.z,
       targetZ,
@@ -75,16 +97,15 @@ export default function Lens() {
     );
     state.camera.lookAt(0, 0, 0);
 
-    const pulse = 1 + Math.sin(p * Math.PI) * 0.12;
+    const pulse = 1 + Math.sin(p * Math.PI) * 0.1;
     ring.current.scale.setScalar(pulse);
     if (ringMat.current) {
-      ringMat.current.emissiveIntensity = 0.3 + p * 0.9;
+      ringMat.current.emissiveIntensity = 0.3 + p * 0.7;
     }
   });
 
   return (
     <group ref={rig}>
-      {/* Outer aperture ring — glass / transmission material for real refraction */}
       <mesh ref={ring}>
         <torusGeometry args={[2.1, 0.16, 32, 128]} />
         <MeshTransmissionMaterial
@@ -102,13 +123,11 @@ export default function Lens() {
         />
       </mesh>
 
-      {/* Thin secondary ring for parallax depth */}
       <mesh rotation={[Math.PI / 2.4, 0, 0]}>
         <torusGeometry args={[1.55, 0.012, 8, 100]} />
         <meshBasicMaterial color="#ffffff" transparent opacity={0.3} />
       </mesh>
 
-      {/* Organic distorted core — only achievable via real-time shader uniforms */}
       <Float speed={2} rotationIntensity={0.6} floatIntensity={0.8}>
         <mesh>
           <icosahedronGeometry args={[0.85, 6]} />
@@ -128,5 +147,3 @@ export default function Lens() {
     </group>
   );
 }
-
-export { STAGE_COUNT };

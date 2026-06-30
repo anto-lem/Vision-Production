@@ -1,0 +1,678 @@
+.section {
+  position: relative;
+  padding: 120px 6%;
+  border-top: 1px solid var(--border);
+}
+
+.sectionInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+  margin-bottom: 18px;
+}
+
+.giantNum {
+  position: absolute;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+  font-size: min(34vw, 380px);
+  line-height: 1;
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ---------------- Hero ---------------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  border-top: none;
+}
+
+.heroFallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(227, 28, 61, 0.1), transparent 55%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 0 6%;
+}
+
+.heroTitle {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 7vw, 100px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+
+.heroSub {
+  max-width: 540px;
+  margin: 0 auto 16px;
+  color: var(--text-sec);
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+
+.heroStat {
+  font-size: 12.5px;
+  color: var(--text-ter);
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+}
+
+.ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.25s ease;
+  min-height: 44px;
+}
+
+.btnPrimary {
+  background: var(--red);
+  color: var(--white);
+}
+
+.btnPrimary:hover {
+  background: #ff2547;
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  border: 1px solid var(--border);
+  color: var(--white);
+}
+
+.btnGhost:hover {
+  border-color: var(--white);
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-ter);
+  text-transform: uppercase;
+}
+
+/* ---------------- Mission + stats ---------------- */
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.missionGrid h2 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.15;
+}
+
+.missionGrid p {
+  color: var(--text-sec);
+  font-size: 15.5px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.statCard {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  background: var(--card);
+}
+
+.statCard .num {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--red);
+}
+
+.statCard .label {
+  font-size: 12px;
+  color: var(--text-ter);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------------- Section headers (services/portfolio) ---------------- */
+.headRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.headRow h2 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 4.2vw, 52px);
+  max-width: 640px;
+}
+
+.headRow p {
+  max-width: 340px;
+  color: var(--text-sec);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.viewAll {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  white-space: nowrap;
+}
+
+.viewAll:hover {
+  border-color: var(--white);
+}
+
+/* ---------------- Services ---------------- */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.serviceCard {
+  background: var(--card);
+  padding: 44px;
+}
+
+.serviceCard .num {
+  font-size: 13px;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.serviceCard h3 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+  margin-bottom: 14px;
+}
+
+.serviceCard p {
+  color: var(--text-sec);
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.serviceCard ul {
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-ter);
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.serviceCard li {
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+
+.serviceCard li:first-child {
+  border-top: none;
+}
+
+.timeline {
+  font-size: 12px;
+  color: var(--text-ter);
+  letter-spacing: 0.04em;
+}
+
+.timeline b {
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* ---------------- Portfolio ---------------- */
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.caseCard {
+  position: relative;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(150deg, #161618, #0c0c0d);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.25s ease;
+}
+
+.caseCard:hover {
+  border-color: #555;
+}
+
+.caseTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-ter);
+  letter-spacing: 0.1em;
+}
+
+.caseTag {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-ter);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.caseCard h4 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.caseNote {
+  margin-top: 28px;
+  font-size: 12.5px;
+  color: var(--text-ter);
+  border-left: 2px solid var(--red);
+  padding-left: 14px;
+  line-height: 1.6;
+}
+
+/* ---------------- Process ---------------- */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.processCard {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 30px 24px;
+  background: var(--card);
+}
+
+.processCard .step {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--red);
+  margin-bottom: 18px;
+}
+
+.processCard h3 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.processCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-sec);
+  line-height: 1.9;
+}
+
+/* ---------------- Client logos ---------------- */
+.logosLabel {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-ter);
+  margin-bottom: 36px;
+}
+
+.logosRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.logoChip {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 26px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--text-ter);
+  text-transform: uppercase;
+}
+
+/* ---------------- Testimonials ---------------- */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonialCard {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 30px;
+  background: var(--card);
+}
+
+.testimonialBadge {
+  display: inline-block;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin-bottom: 18px;
+}
+
+.testimonialCard p {
+  color: var(--text-sec);
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.testimonialAuthor {
+  font-size: 13px;
+  color: var(--text-ter);
+}
+
+/* ---------------- Pricing ---------------- */
+.pricingWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.pricingCard {
+  width: 100%;
+  max-width: 440px;
+  border: 1px solid var(--red);
+  border-radius: 8px;
+  padding: 40px;
+  background: var(--card);
+  position: relative;
+}
+
+.pricingBadge {
+  position: absolute;
+  top: -13px;
+  left: 40px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.priceLine {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 18px 0 6px;
+}
+
+.priceLine .amount {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+}
+
+.priceLine .period {
+  color: var(--text-ter);
+  font-size: 14px;
+}
+
+.pricingNote {
+  font-size: 12px;
+  color: var(--text-ter);
+  margin-bottom: 24px;
+}
+
+.pricingCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  font-size: 14px;
+  color: var(--text-sec);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pricingCard li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+/* ---------------- CTA banner ---------------- */
+.ctaBanner {
+  text-align: center;
+}
+
+.ctaBanner h2 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 5vw, 56px);
+  margin-bottom: 28px;
+}
+
+/* ---------------- Contact ---------------- */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
+}
+
+.contactGrid h1 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 4.5vw, 56px);
+  margin-bottom: 20px;
+}
+
+.contactGrid > div:first-child p {
+  color: var(--text-sec);
+  font-size: 15.5px;
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 30px;
+}
+
+.contactMeta {
+  font-size: 13.5px;
+  color: var(--text-ter);
+  line-height: 2;
+}
+
+.contactMeta b {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form label {
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-ter);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  color: var(--white);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 15px;
+  min-height: 44px;
+}
+
+.form input:focus-visible,
+.form textarea:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  background: var(--red);
+  border: none;
+  border-radius: 6px;
+  padding: 16px 28px;
+  color: var(--white);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  min-height: 44px;
+  transition: all 0.25s ease;
+}
+
+.submitBtn:hover {
+  background: #ff2547;
+  transform: translateY(-2px);
+}
+
+.pageHero {
+  padding: 150px 6% 60px;
+}
+
+.pageHero h1 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 60px);
+  max-width: 760px;
+}
+
+.pageHero p {
+  color: var(--text-sec);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-top: 18px;
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 80px 6%;
+  }
+  .missionGrid,
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .statsRow,
+  .servicesGrid,
+  .portfolioGrid,
+  .processGrid,
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  .pageHero {
+    padding: 120px 6% 50px;
+  }
+}
